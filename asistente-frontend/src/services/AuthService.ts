@@ -20,3 +20,8 @@ export function logout() {
 export function isAuthenticated(): boolean {
   return !!localStorage.getItem("token");
 }
+
+export async function getProfile() {
+  const res = await api.get("/auth/me");
+  return res.data as { id:number; email:string; name:string };
+}

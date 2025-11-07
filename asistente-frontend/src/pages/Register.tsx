@@ -23,14 +23,13 @@ export default function Register(){
   return (
     <div className="auth-shell">
       <div className="card">
-        <div className="brand">
-          <div className="brand__dot" />
-          <div className="brand__text">
-            <div className="brand__uni">UNIVERSIDAD</div>
-            <div className="brand__nur">NUR</div>
-          </div>
+        <div className="brand" style={{ justifyContent: "center" }}>
+          <img
+            src="/src/assets/nur-logo.png"
+            alt="Logo NUR"
+            style={{ height: "100px", objectFit: "contain" }}
+          />
         </div>
-
         <h1 className="auth-title">Crear cuenta</h1>
 
         <form onSubmit={submit}>

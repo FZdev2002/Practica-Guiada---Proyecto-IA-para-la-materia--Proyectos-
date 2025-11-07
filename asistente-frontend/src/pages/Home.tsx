@@ -1,20 +1,34 @@
-import { useState } from "react";
-import { logout } from "../services/AuthService";
+import { useEffect, useState } from "react";
+import { logout, getProfile } from "../services/AuthService";
 import api from "../services/api";
+import { marked } from "marked";
 
 type Msg = { id: string; role: "user" | "assistant"; content: string };
+type User = { id: number; name: string; email: string };
 
 export default function Home() {
+  const [user, setUser] = useState<User | null>(null);
   const [messages, setMessages] = useState<Msg[]>([]);
   const [text, setText] = useState("");
+  const [loading, setLoading] = useState(false); // 👈 NUEVO
+
+  useEffect(() => {
+    getProfile()
+      .then(setUser)
+      .catch(() => {
+        logout();
+        location.href = "/login";
+      });
+  }, []);
 
   const send = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!text.trim()) return;
+    if (!text.trim() || loading) return; // evita enviar doble mientras carga
 
     const userMsg: Msg = { id: crypto.randomUUID(), role: "user", content: text };
     setMessages((p) => [...p, userMsg]);
     setText("");
+    setLoading(true); //activa el indicador
 
     try {
       const res = await api.post("/chat", { message: userMsg.content, unidad: 1 });
@@ -31,19 +45,22 @@ export default function Home() {
         content: "Hubo un problema al obtener la respuesta.",
       };
       setMessages((p) => [...p, botMsg]);
+    } finally {
+      setLoading(false); //desactiva el indicador
     }
   };
 
+  const initial = (user?.name?.[0] ?? "?").toUpperCase();
+
   return (
     <div className="dashboard">
-      {/* Header */}
       <header className="app-header">
         <div className="brand-mini">
-          <div className="brand-dot-sm" />
-          <div className="brand-text-sm">
-            <div className="u">UNIVERSIDAD</div>
-            <div className="n">NUR</div>
-          </div>
+          <img
+            src="/src/assets/nur-logo.png"
+            alt="Logo NUR"
+            style={{ height: "80px", objectFit: "contain" }}
+          />
         </div>
 
         <h1 style={{ color: "var(--nur-blue)", fontSize: 18, fontWeight: 800 }}>
@@ -51,7 +68,10 @@ export default function Home() {
         </h1>
 
         <div className="user-chip">
-          <div className="user-avatar">F</div>
+          <div className="user-avatar">{initial}</div>
+          <span style={{ fontSize: 14, fontWeight: 600 }}>
+            {user ? user.name : "Cargando..."}
+          </span>
           <button
             className="btn-ghost"
             onClick={() => {
@@ -64,9 +84,7 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Grid principal */}
       <div className="main-grid">
-        {/* Columna izquierda: Chat */}
         <section>
           <div className="card2">
             <div className="card-head">
@@ -81,13 +99,23 @@ export default function Home() {
             <div className="card-body">
               <div className="chat-box">
                 <div className="chat-messages">
-                  {messages.map((m) => (
-                    <div key={m.id} style={{ textAlign: m.role === "user" ? "right" : "left" }}>
-                      <span className={`bubble ${m.role === "user" ? "user" : "bot"}`}>
-                        {m.content}
-                      </span>
+                  {messages.map((m) => {
+                    const isTutorQuestion = m.role === "assistant" && m.content.trim().endsWith("?");
+                    return (
+                      <div key={m.id} style={{ textAlign: m.role === "user" ? "right" : "left" }}>
+                        <span
+                          className={`bubble ${m.role === "user" ? "user" : isTutorQuestion ? "tutor-q" : "bot"}`}
+                          dangerouslySetInnerHTML={{ __html: marked.parse(m.content) }}
+                        />
+                      </div>
+                    );
+                  })}
+
+                  {loading && (
+                    <div style={{ textAlign: "left", color: "#64748b", fontStyle: "italic" }}>
+                      El asistente está pensando<span className="loading-dots" />
                     </div>
-                  ))}
+                  )}
                 </div>
 
                 <form onSubmit={send} className="chat-input">
@@ -95,9 +123,10 @@ export default function Home() {
                     placeholder="Escribe tu pregunta… (ej. ¿Qué es un proyecto?)"
                     value={text}
                     onChange={(e) => setText(e.target.value)}
+                    disabled={loading} // evita escribir mientras carga
                   />
-                  <button className="btn-primary" type="submit">
-                    Enviar
+                  <button className="btn-primary" type="submit" disabled={loading}>
+                    {loading ? "Esperando..." : "Enviar"}
                   </button>
                 </form>
               </div>
@@ -105,7 +134,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Columna derecha: solo Recursos */}
         <aside className="space-y-4">
           <div className="card2">
             <div className="card-head">
@@ -116,8 +144,8 @@ export default function Home() {
                 Alcance activado: <strong>Unidad 1–2</strong>
               </p>
               <ul style={{ margin: 0, paddingLeft: 18 }}>
-                <li>Guía PMBOK – Unidad 1 (fundamentos)</li>
-                <li>Áreas de conocimiento – Unidad 2</li>
+                <li>Introducción a la Gestión de Poryectos – Unidad 1</li>
+                <li>Fase de Inicio – Unidad 2</li>
               </ul>
             </div>
           </div>
