@@ -10,7 +10,7 @@ export default function Home() {
   const [user, setUser] = useState<User | null>(null);
   const [messages, setMessages] = useState<Msg[]>([]);
   const [text, setText] = useState("");
-  const [loading, setLoading] = useState(false); // 👈 NUEVO
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     getProfile()
@@ -31,7 +31,7 @@ export default function Home() {
     setLoading(true); //activa el indicador
 
     try {
-      const res = await api.post("/chat", { message: userMsg.content, unidad: 1 });
+      const res = await api.post("/chat", { message: userMsg.content});
       const botMsg: Msg = {
         id: crypto.randomUUID(),
         role: "assistant",

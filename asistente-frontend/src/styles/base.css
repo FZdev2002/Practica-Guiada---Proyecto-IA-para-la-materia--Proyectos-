@@ -9,7 +9,6 @@ body{
   background:var(--bg);
 }
 
-/* contenedor centrado para páginas de auth */
 .auth-shell{
   min-height:100%;
   display:grid;
@@ -17,7 +16,6 @@ body{
   padding:24px;
 }
 
-/* tarjeta base */
 .card{
   width:100%;
   max-width: 460px;
@@ -27,7 +25,6 @@ body{
   padding: 28px;
 }
 
-/* fila logo */
 .brand{
   display:flex; align-items:center; gap:12px; margin-bottom: 18px;
 }
@@ -45,7 +42,6 @@ body{
   font-weight:800; color:var(--nur-blue); font-size:18px;
 }
 
-/* título */
 .card h1{
   margin: 4px 0 16px;
   color: var(--nur-blue);
@@ -53,7 +49,6 @@ body{
   font-weight: 700;
 }
 
-/* inputs */
 .input{
   width:100%;
   background: var(--input-bg);
@@ -70,10 +65,8 @@ body{
   box-shadow: 0 0 0 3px var(--input-focus);
 }
 
-/* grupos */
 .form-group{ margin-bottom: 14px; }
 
-/* botón */
 .btn{
   width:100%;
   border:none;
@@ -88,7 +81,6 @@ body{
 .btn:hover{ background: var(--nur-gold-700) }
 .btn:active{ transform: translateY(1px) }
 
-/* link debajo */
 .auth-foot{
   margin-top: 14px;
   font-size: 14px;
@@ -101,6 +93,5 @@ body{
 }
 .auth-foot a:hover{ text-decoration: underline }
 
-/* errores */
 .error{ color:#b91c1c; font-size:13px; margin-top:6px }
 .success{ color:#166534; font-size:13px; margin-top:6px }

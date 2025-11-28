@@ -1,20 +1,19 @@
 :root{
-  /* Paleta NUR aproximada */
   --nur-blue: #0A3B73;
   --nur-blue-700:#0a3b73;
   --nur-blue-900:#072C56;
   --nur-gold: #D4A017;
   --nur-gold-700:#B78914;
 
-  --bg:#F4F7FC;       /* fondo claro */
-  --text:#0F172A;     /* texto */
-  --muted:#64748B;    /* texto secundario */
+  --bg:#F4F7FC;
+  --text:#0F172A;
+  --muted:#64748B;
 
-  --radius:16px;      /* borde de la tarjeta */
+  --radius:16px;
   --shadow: 0 16px 48px rgba(10,59,115,0.10);
   --shadow-soft: 0 6px 18px rgba(10,59,115,0.08);
 
   --input-bg:#FFFFFF;
   --input-border:#E2E8F0;
-  --input-focus:#BBD1EA; /* anillo foco */
+  --input-focus:#BBD1EA;
 }
