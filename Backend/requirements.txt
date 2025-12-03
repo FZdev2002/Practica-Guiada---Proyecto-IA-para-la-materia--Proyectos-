@@ -8,3 +8,6 @@ openai
 pydantic
 markdown
 python-dotenv
+
+#opcional
+alembic
