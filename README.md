@@ -14,7 +14,7 @@
 
 ## Requisitos previos
 
-**Backend (FastAPI – Python)**
+### Backend (FastAPI – Python)
 
 ⦁	Python 3.10+
 
@@ -23,7 +23,7 @@
 ⦁	Pycharm (opcional)
 
 
-**Frontend (React + Vite)**
+### Frontend (React + Vite)
 
 ⦁	Node.js 18+
 
