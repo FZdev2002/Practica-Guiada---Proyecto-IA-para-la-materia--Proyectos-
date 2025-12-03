@@ -1,4 +1,4 @@
-**Asistente IA Educativo (FastAPI + React)**
+# Asistente IA Educativo (FastAPI + React)
 
 **Proyecto académico que integra:**
 
@@ -12,7 +12,7 @@
 
 ⦁	Contenido académico: Archivos Markdown (Unidad 1 y 2)
 
-**Requisitos previos**
+## Requisitos previos
 
 **Backend (FastAPI – Python)**
 
@@ -30,9 +30,10 @@
 ⦁	Visual Studio Code
 
 
-**Ejecutar el BACKEND (FastAPI)**
+## Ejecutar el BACKEND (FastAPI)
 
 Ubicarse dentro de la carpeta del backend: cd backend
+
 
 • **(Opcional) Crear entorno virtual:** python -m venv venv
 
@@ -48,13 +49,11 @@ $env:OPENAI_API_KEY="TU_API_KEY"
 uvicorn main:app --reload
 
 El backend quedará disponible en: http://localhost:8000
-
 Documentación automática: http://localhost:8000/docs
 
-**Ejecutar el FRONTEND (React + Vite)**
+## Ejecutar el FRONTEND (React + Vite)
 
-**Ubicarse dentro de la carpeta del frontend:**
-
+Ubicarse dentro de la carpeta del frontend:
 cd frontend
 
 **Instalar dependencias:** npm install
@@ -63,7 +62,7 @@ cd frontend
 
 El frontend quedará disponible en: http://localhost:5173
 
-**Dependencias principales del Frontend**
+### Dependencias principales del Frontend
 
 ⦁	axios
 
@@ -82,7 +81,7 @@ El frontend quedará disponible en: http://localhost:5173
 ⦁	typescript
 
 
-**Dependencias principales del Backend**
+### Dependencias principales del Backend**
 
 **(FastAPI + SQLAlchemy + OpenAI)**
 
@@ -101,7 +100,7 @@ El frontend quedará disponible en: http://localhost:5173
 ⦁	python-multipart
 
 
-**Estructura del Backend**
+## Estructura del Backend
 
 ⦁	main.py → inicia FastAPI, CORS, rutas
 
@@ -116,7 +115,7 @@ El frontend quedará disponible en: http://localhost:5173
 ⦁	content/ → archivos Markdown de las unidades
 
 
-**Notas importantes**
+## Notas importantes
 
 ⦁	Este proyecto requiere obligatoriamente una OPENAI_API_KEY.
 
@@ -125,7 +124,7 @@ El frontend quedará disponible en: http://localhost:5173
 ⦁	Para producción, cambiar la URL del backend en el frontend.
 
 
-**Cómo se ejecuta todo junto**
+## Cómo se ejecuta todo junto
 
 1.	Levantas el backend: uvicorn main:app --reload
 
