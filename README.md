@@ -3,10 +3,15 @@ Asistente IA Educativo (FastAPI + React)
 Proyecto académico que integra:
 
 ⦁	Backend: FastAPI (Python)
+
 ⦁	Frontend: React + Vite (TypeScript)
+
 ⦁	IA: OpenAI GPT-4.1-nano
+
 ⦁	Base de datos: SQLite
+
 ⦁	Contenido académico: Archivos Markdown (Unidad 1 y 2)
+
 
 Requisitos previos
 
