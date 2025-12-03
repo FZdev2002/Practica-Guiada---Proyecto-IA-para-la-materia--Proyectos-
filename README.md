@@ -48,11 +48,13 @@ $env:OPENAI_API_KEY="TU_API_KEY"
 uvicorn main:app --reload
 
 El backend quedará disponible en: http://localhost:8000
+
 Documentación automática: http://localhost:8000/docs
 
 **Ejecutar el FRONTEND (React + Vite)**
 
-Ubicarse dentro de la carpeta del frontend:
+**Ubicarse dentro de la carpeta del frontend:**
+
 cd frontend
 
 **Instalar dependencias:** npm install
