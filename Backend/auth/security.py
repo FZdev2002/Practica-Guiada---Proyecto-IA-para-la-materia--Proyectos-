@@ -7,7 +7,7 @@ from sqlalchemy.orm import Session
 from db.database import get_db
 from db.models import User
 
-# Claves simples para demo (cámbialas en producción)
+# Claves simples para demo
 JWT_SECRET = "cl4veFans2580"
 JWT_ALG = "HS256"
 JWT_MINUTES = 60  # 1 hora

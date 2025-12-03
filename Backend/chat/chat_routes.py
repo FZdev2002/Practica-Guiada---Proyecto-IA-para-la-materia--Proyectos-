@@ -15,7 +15,7 @@ class ChatRequest(BaseModel):
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-# 🔥 Cargar TODAS las unidades automáticamente
+# Carga TODAS las unidades automáticamente
 UNIDADES = ""
 for file in sorted(glob.glob("content/*.md")):
     with open(file, "r", encoding="utf-8") as f:
